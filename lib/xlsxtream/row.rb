@@ -49,6 +49,8 @@ module Xlsxtream
           xml << %Q{<c r="#{cid}" s="#{TIME_STYLE}"><v>#{datetime_to_oa_date(value)}</v></c>}
         when Date
           xml << %Q{<c r="#{cid}" s="#{DATE_STYLE}"><v>#{date_to_oa_date(value)}</v></c>}
+        when NilClass
+          xml << %Q{<c r="#{cid}" />}
         else
           value = value.to_s
 
