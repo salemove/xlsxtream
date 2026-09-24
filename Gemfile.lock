@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xlsxtream (3.1.0)
+    xlsxtream (3.2.0)
       zip_kit (>= 6.2, < 7)
 
 GEM

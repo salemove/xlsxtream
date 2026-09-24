@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.2.0 (2026-09-24)
+
+This is the salemove fork's release of 3.1.0. Upstream's own 3.2.0 is a different release.
+
+- Write a cell for nil and empty string values instead of skipping them (JRVS-306, #43)
+- Drop support for Ruby < 3.3.0
+
 ## 3.1.0 (2024-12-28)
 
 - Escape strings that look like Excel escape sequences (#56)
