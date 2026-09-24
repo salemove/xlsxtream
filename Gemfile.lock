@@ -21,7 +21,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (>= 1.7, < 3)
+  bundler (>= 1.7)
   minitest
   rake
   rubyzip (>= 1.2)
