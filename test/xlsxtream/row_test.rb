@@ -4,9 +4,16 @@ require 'xlsxtream/row'
 
 module Xlsxtream
   class RowTest < Minitest::Test
-    def test_empty_column
+    def test_nil_column
       row = Row.new([nil], 1)
-      expected = '<row r="1"></row>'
+      expected = '<row r="1"><c r="A1" /></row>'
+      actual = row.to_xml
+      assert_equal expected, actual
+    end
+
+    def test_empty_string_column
+      row = Row.new([''], 1)
+      expected = '<row r="1"><c r="A1" t="inlineStr"><is><t></t></is></c></row>'
       actual = row.to_xml
       assert_equal expected, actual
     end
@@ -146,9 +153,17 @@ module Xlsxtream
       assert_equal expected, actual
     end
 
+    def test_empty_string_column_with_shared_string_table
+      mock_sst = { '' => 3 }
+      row = Row.new([''], 1, :sst => mock_sst)
+      expected = '<row r="1"><c r="A1" t="s"><v>3</v></c></row>'
+      actual = row.to_xml
+      assert_equal expected, actual
+    end
+
     def test_multiple_columns
-      row = Row.new(['foo', nil, 23], 1)
-      expected = '<row r="1"><c r="A1" t="inlineStr"><is><t>foo</t></is></c><c r="C1" t="n"><v>23</v></c></row>'
+      row = Row.new(['foo', '', nil, 23], 1)
+      expected = '<row r="1"><c r="A1" t="inlineStr"><is><t>foo</t></is></c><c r="B1" t="inlineStr"><is><t></t></is></c><c r="C1" /><c r="D1" t="n"><v>23</v></c></row>'
       actual = row.to_xml
       assert_equal expected, actual
     end
