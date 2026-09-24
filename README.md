@@ -129,9 +129,9 @@ end
 
 ## Compatibility
 
-The current version of Xlsxtream requires at least Ruby 2.6
+The current version of Xlsxtream requires at least Ruby 3.3.
 
-If you are using an older Ruby version you can use the following in your Gemfile:
+If you are using a Ruby older than 2.6 you can use the following in your Gemfile:
 
 ```ruby
 gem 'xlsxtream', '< 3'
